@@ -1,0 +1,81 @@
+---
+name: setup-project-vault
+description: Configure this repo to use an Obsidian project vault — clone the vault, optionally make it the issue tracker, and wire ADRs/PRDs/issues into it. Vault-first alternative to setup-matt-pocock-skills. Run once per repo.
+disable-model-invocation: true
+---
+
+# Setup Project Vault
+
+Clone an [Obsidian project vault](https://github.com/jaidetree/obsidian-project-vault) into this repo and wire the engineering skills to it. The vault is a human-friendly (Obsidian) + agent-friendly home for ADRs, PRDs, and issues.
+
+Emits the same `docs/agents/*.md` receipts as `setup-matt-pocock-skills`, so consuming skills need no changes.
+
+Prompt-driven: explore, present, confirm, then write.
+
+## Process
+
+### 1. Explore
+
+- `git remote -v` — GitHub? GitLab? none?
+- `CLAUDE.md` / `AGENTS.md` at root — which exists? Existing `## Agent skills` block?
+- `vault/` — already cloned?
+- `docs/agents/` — prior receipts?
+- Build/test/lint commands (`package.json` scripts, Makefile, etc.) and module/structure conventions — needed to fill the `/slice` skill in step 6.
+
+### 2. Clone the vault
+
+Run `./clone-vault.sh vault` (from this skill folder). Strips `.git` so vault files become plain files in this repo. If `vault/` exists, confirm before overwriting.
+
+The vault hosts `vault/ADRs/`, `vault/Knowledge/`, `vault/Library/` regardless of the tracker choice below.
+
+### 3. Ask: use the vault as the issue tracker?
+
+> Explainer: If yes, PRDs and issues live in the vault as markdown under `vault/Projects/<slug>/`, with a visual kanban board (Obsidian Bases). If no, keep tracking issues on GitHub/GitLab/local markdown — the vault is still the home for ADRs and knowledge notes.
+
+Default: **yes**.
+
+If **no**, ask the tracker inline (GitHub / GitLab / local markdown) and write `docs/agents/issue-tracker.md` from the matching seed in `../setup-matt-pocock-skills/` (`issue-tracker-github.md` / `-gitlab.md` / `-local.md`). Do **not** send the user to run a second setup skill.
+
+### 4. Confirm triage labels
+
+The five canonical roles come from `../setup-matt-pocock-skills/triage-labels.md` (shared vocabulary). In the vault these roles are applied as frontmatter `tags:` on issue files, not tracker labels. Ask if the user wants to override any string; defaults are fine.
+
+### 5. Confirm domain layout
+
+Single-context (`CONTEXT.md` + ADRs) or multi-context (`CONTEXT-MAP.md`). ADRs live at `vault/ADRs`.
+
+### 6. Write receipts + wire git
+
+- **If vault is tracker:** `docs/agents/issue-tracker.md` from [issue-tracker-vault.md](./issue-tracker-vault.md).
+- `docs/agents/triage-labels.md` — copy `../setup-matt-pocock-skills/triage-labels.md`; note roles are applied as frontmatter `tags:`.
+- `docs/agents/domain.md` — copy `../setup-matt-pocock-skills/domain.md`, but point ADRs at a single `vault/ADRs`. The vault collapses **all** ADRs (single- and multi-context) into `vault/ADRs` — there are no per-context `src/<context>/docs/adr/` dirs. Fix the file-structure trees to match; leave the consumer rules (glossary use, ADR-conflict flagging) unchanged.
+- `## Agent skills` block in `CLAUDE.md`/`AGENTS.md` (see below). Same selection rules as `setup-matt-pocock-skills`: edit the file that exists; if neither, ask which to create; update an existing block in place.
+- Ensure the project `.gitignore` ignores `vault/.obsidian/workspace*` (create `.gitignore` if absent).
+- **If vault is tracker:** generate the project-local `/slice` skill (step 7).
+- Commit the vault into the repo (files only — `.git` already stripped).
+
+The block:
+
+```markdown
+## Agent skills
+
+### Issue tracker
+
+[one-line: vault at `vault/Projects/<slug>/`, or the fallback tracker]. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+[one-line: roles applied as frontmatter tags]. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+[one-line: single/multi-context, ADRs at `vault/ADRs`]. See `docs/agents/domain.md`.
+```
+
+### 7. Generate the `/slice` skill (only if vault is tracker)
+
+Copy [slice-template.md](./slice-template.md) → `.claude/skills/slice/SKILL.md`. Fill every `{{...}}` placeholder from what step 1 found (build/test/lint commands, module rules). This bakes the vault workflow + project specifics into one skill so fresh sessions don't re-learn it.
+
+### 8. Done
+
+Tell the user setup is complete. New PRDs/features get a project dir via `./new-project.sh <slug>`. They can edit `docs/agents/*.md` and `vault/` directly; re-run only to switch trackers or restart.

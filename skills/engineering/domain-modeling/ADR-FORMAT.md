@@ -1,8 +1,8 @@
 # ADR Format
 
-ADRs live in `docs/adr/` and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc.
+ADRs live in the directory recorded in `docs/agents/domain.md` (`docs/adr/` by default; `vault/ADRs` for vault projects). They use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc. Everywhere below that names `docs/adr/`, use that configured directory.
 
-Create the `docs/adr/` directory lazily — only when the first ADR is needed.
+Create the ADR directory lazily — only when the first ADR is needed.
 
 ## Template
 

@@ -72,3 +72,5 @@ Off the main flow entirely.
 ## Precondition
 
 **`/setup-matt-pocock-skills`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
+
+**`/setup-project-vault`** — vault-first alternative to `/setup-matt-pocock-skills`. Clones an Obsidian project vault into the repo and makes it the home for ADRs, PRDs, and issues (a kanban board where dev state is the folder and triage roles are frontmatter tags). Emits the same `docs/agents/*.md` receipts, and generates a project-local `/slice` skill. Pick this instead of `/setup-matt-pocock-skills` when you want your tracker in Obsidian; pick `/setup-matt-pocock-skills` for GitHub/GitLab/local-markdown tracking.
