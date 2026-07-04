@@ -46,13 +46,16 @@ Single-context (`CONTEXT.md` + ADRs) or multi-context (`CONTEXT-MAP.md`). ADRs l
 
 ### 6. Write receipts + wire git
 
+Do each applicable item below, then confirm all are done before moving on:
+
+- `docs/agents/triage-labels.md` — copy `../setup-matt-pocock-skills/triage-labels.md`; note roles are applied as frontmatter `tags:`, not tracker labels.
+- `docs/agents/domain.md` — copy `../setup-matt-pocock-skills/domain.md`, then rewrite its file-structure trees so ADRs sit in one `vault/ADRs` dir (no per-context `src/<context>/docs/adr/`). Leave the consumer rules (glossary use, ADR-conflict flagging) unchanged.
 - **If vault is tracker:** `docs/agents/issue-tracker.md` from [issue-tracker-vault.md](./issue-tracker-vault.md).
-- `docs/agents/triage-labels.md` — copy `../setup-matt-pocock-skills/triage-labels.md`; note roles are applied as frontmatter `tags:`.
-- `docs/agents/domain.md` — copy `../setup-matt-pocock-skills/domain.md`, but point ADRs at a single `vault/ADRs`. The vault collapses **all** ADRs (single- and multi-context) into `vault/ADRs` — there are no per-context `src/<context>/docs/adr/` dirs. Fix the file-structure trees to match; leave the consumer rules (glossary use, ADR-conflict flagging) unchanged.
 - `## Agent skills` block in `CLAUDE.md`/`AGENTS.md` (see below). Same selection rules as `setup-matt-pocock-skills`: edit the file that exists; if neither, ask which to create; update an existing block in place.
 - Ensure the project `.gitignore` ignores `vault/.obsidian/workspace*` (create `.gitignore` if absent).
-- **If vault is tracker:** generate the project-local `/slice` skill (step 7).
 - Commit the vault into the repo (files only — `.git` already stripped).
+
+Then, **if vault is tracker**, generate the project-local `/slice` skill (step 7).
 
 The block:
 
