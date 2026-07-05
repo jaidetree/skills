@@ -15,6 +15,12 @@ Issues and PRDs live as markdown in the vault at `vault/Projects/<slug>/`. A vis
 
 Issue body template: `vault/Templates/Issue Template.md` (Description / User Stories / Implementation Plan Overview / Acceptance Criteria).
 
+## When a skill says "publish a PRD"
+
+1. Derive the project slug from the PRD/feature title (kebab-case). Confirm if ambiguous.
+2. Invoke `/new-vault-project <slug>` to scaffold `vault/Projects/<slug>/` if it doesn't exist.
+3. Write the PRD content to `vault/Projects/<slug>/PRD.md`.
+
 ## When a skill says "publish an issue"
 
 Create a new file in `vault/Projects/<slug>/issues/Backlog/` with a `ready-for-agent` tag (or the role instructed).
