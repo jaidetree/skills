@@ -2,8 +2,9 @@
 set -euo pipefail
 
 # Instantiate a new project/feature dir in the vault from the bundled template.
-# Copies Templates/Project/<project-name>/ -> Projects/<slug>/, renames the
-# .base board, and repoints its columnRoot at the new path.
+# Copies Templates/Project/<project-name>/ -> Projects/<slug>/ and repoints the
+# "Project Board.base" columnRoot at the new path. The board keeps its fixed
+# name because Obsidian always shows it as Projects / <slug> / Project Board.
 #
 # Usage: ./new-project.sh <slug> [vault-dir]   (vault-dir defaults to "vault")
 #
@@ -26,10 +27,9 @@ if [ -e "$dest" ]; then
 fi
 
 cp -R "$tpl" "$dest"
-mv "$dest/<project-name>.base" "$dest/$slug.base"
 
 # Repoint the kanban columnRoot from the template path to this project.
-sed -i.bak "s#Templates/Project/<project-name>/issues#Projects/$slug/issues#g" "$dest/$slug.base"
-rm -f "$dest/$slug.base.bak"
+sed -i.bak "s#Templates/Project/<project-name>/issues#Projects/$slug/issues#g" "$dest/Project Board.base"
+rm -f "$dest/Project Board.base.bak"
 
-echo "created '$dest' (board: $slug.base)"
+echo "created '$dest' (board: Project Board.base)"
