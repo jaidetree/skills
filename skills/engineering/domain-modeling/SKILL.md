@@ -37,7 +37,7 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 │       └── docs/adr/
 ```
 
-The ADR directory shown here (`docs/adr/`) is the default. Its real location is whatever `docs/agents/domain.md` records — e.g. vault projects keep ADRs at `vault/ADRs`, and collapse the per-context `docs/adr/` dirs into that single directory. Read and write ADRs there.
+The `CONTEXT.md` and ADR locations shown here (repo root, `docs/adr/`) are defaults. Their real locations are whatever `docs/agents/domain.md` records — e.g. vault projects keep the glossary at `<vault-dir>/Domain/CONTEXT.md`, keep ADRs at `<vault-dir>/ADRs`, and collapse the per-context `docs/adr/` dirs into that single directory. Read and write both there.
 
 Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no ADR directory exists, create it when the first ADR is needed.
 

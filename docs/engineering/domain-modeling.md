@@ -24,7 +24,7 @@ Reach for it when the *words* are the problem: two people mean different things 
 
 ## Prerequisites
 
-The skill writes into two places, both created lazily — only once there is something to record. Resolved terms go into `CONTEXT.md` at the root (or, in a multi-context repo flagged by a `CONTEXT-MAP.md`, into the per-context `CONTEXT.md`). Decisions go into `docs/adr/`. Nothing needs to exist up front; the first resolved term creates the glossary, the first real trade-off creates the ADR.
+The skill writes into two places, both created lazily — only once there is something to record. Resolved terms go into `CONTEXT.md` at the root (or, in a multi-context repo flagged by a `CONTEXT-MAP.md`, into the per-context `CONTEXT.md`). Decisions go into `docs/adr/`. Those are defaults: when `docs/agents/domain.md` records other locations — a vault project keeps the glossary at `<vault-dir>/Domain/CONTEXT.md` and ADRs at `<vault-dir>/ADRs` — the skill reads and writes there instead. Nothing needs to exist up front; the first resolved term creates the glossary, the first real trade-off creates the ADR.
 
 ## Glossary vs. ADR
 

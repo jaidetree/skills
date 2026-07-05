@@ -26,7 +26,7 @@ the target is ambiguous, stop and ask.
 
 1. Read `LEARNINGS.md` if it exists; surface the most relevant points.
 2. Read the slice file, plus its PRD (`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/PRD.md`),
-   `CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
+   `{{VAULT_DIR}}/Domain/CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
    found — report what failed.
 3. Move the slice file `Ready` → `In Progress` (folder = dev state; see
    `docs/agents/issue-tracker.md`).
