@@ -18,15 +18,15 @@ Take one tracked slice of {{PROJECT_NAME}} end-to-end: In Progress → implement
 commit → Review.
 
 Requires an issue argument (a `NN-slug` stem or number). Resolve it under
-`vault/Projects/{{PROJECT_SLUG}}/issues/**` by filename stem (zero-pad numbers to
+`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/issues/**` by filename stem (zero-pad numbers to
 two digits) — the folder it sits in is its current dev state. If no argument, or
 the target is ambiguous, stop and ask.
 
 ## Steps
 
 1. Read `LEARNINGS.md` if it exists; surface the most relevant points.
-2. Read the slice file, plus its PRD (`vault/Projects/{{PROJECT_SLUG}}/PRD.md`),
-   `CONTEXT.md`, and any `vault/ADRs` it touches. Stop if the issue isn't
+2. Read the slice file, plus its PRD (`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/PRD.md`),
+   `CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
    found — report what failed.
 3. Move the slice file `Ready` → `In Progress` (folder = dev state; see
    `docs/agents/issue-tracker.md`).

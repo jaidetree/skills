@@ -1,33 +1,37 @@
+---
+vault_dir: {{VAULT_DIR}}
+---
+
 # Issue tracker: Obsidian project vault
 
-Issues and PRDs live as markdown in the vault at `vault/Projects/<slug>/`. A visual kanban board (Obsidian Bases `.base` file) renders them for humans; agents operate on the files directly.
+Issues and PRDs live as markdown in the vault at `{{VAULT_DIR}}/Projects/<slug>/`. A visual kanban board (Obsidian Bases `.base` file) renders them for humans; agents operate on the files directly.
 
 ## Conventions
 
-- One feature/PRD per dir: `vault/Projects/<slug>/`. Create with `./new-project.sh <slug>` (from the `setup-project-vault` skill folder).
-- PRD: `vault/Projects/<slug>/PRD.md`.
-- Issues/slices: `vault/Projects/<slug>/issues/<Status>/<NN>-<slug>.md`.
+- One feature/PRD per dir: `{{VAULT_DIR}}/Projects/<slug>/`. Create with `./new-project.sh <slug>` (from the `setup-project-vault` skill folder).
+- PRD: `{{VAULT_DIR}}/Projects/<slug>/PRD.md`.
+- Issues/slices: `{{VAULT_DIR}}/Projects/<slug>/issues/<Status>/<NN>-<slug>.md`.
 - **Dev state = the folder** the file sits in: `Backlog / Ready / In Progress / Review / Done / Archived`. Moving the file between these folders is the status change.
 - **Triage role = frontmatter `tags:`** (e.g. `ready-for-agent`) — see `triage-labels.md`. Orthogonal to dev state.
 - **id = the filename** `NN-slug` (e.g. `03-setup-e2e-harness.md`), numbered from `01`.
 - **Blocking** (frontmatter, wayfinder-ready): `blocked_by` / `blocks` are lists of relative markdown links to the issue files, e.g. `[02-api](<../Ready/02-api.md>)` (frontmatter-links plugin). **Resolve by filename stem, never the folder segment** — files move between folders, so the path in the link goes stale by design.
 - **type** (frontmatter): `research | prototype | grilling | task`.
 
-Issue body template: `vault/Templates/Issue Template.md` (Description / User Stories / Implementation Plan Overview / Acceptance Criteria).
+Issue body template: `{{VAULT_DIR}}/Templates/Issue Template.md` (Description / User Stories / Implementation Plan Overview / Acceptance Criteria).
 
 ## When a skill says "publish a PRD"
 
 1. Derive the project slug from the PRD/feature title (kebab-case). Confirm if ambiguous.
-2. Invoke `/new-vault-project <slug>` to scaffold `vault/Projects/<slug>/` if it doesn't exist.
-3. Write the PRD content to `vault/Projects/<slug>/PRD.md`.
+2. Invoke `/new-vault-project <slug>` to scaffold `{{VAULT_DIR}}/Projects/<slug>/` if it doesn't exist.
+3. Write the PRD content to `{{VAULT_DIR}}/Projects/<slug>/PRD.md`.
 
 ## When a skill says "publish an issue"
 
-Create a new file in `vault/Projects/<slug>/issues/Backlog/` with a `ready-for-agent` tag (or the role instructed).
+Create a new file in `{{VAULT_DIR}}/Projects/<slug>/issues/Backlog/` with a `ready-for-agent` tag (or the role instructed).
 
 ## When a skill says "fetch the relevant ticket"
 
-Find the file by its `NN-slug` stem anywhere under `vault/Projects/<slug>/issues/` (its folder = current dev state). The user usually passes the number or stem.
+Find the file by its `NN-slug` stem anywhere under `{{VAULT_DIR}}/Projects/<slug>/issues/` (its folder = current dev state). The user usually passes the number or stem.
 
 ## When a skill sets a triage state
 

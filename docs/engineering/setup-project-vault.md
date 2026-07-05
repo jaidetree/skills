@@ -14,7 +14,7 @@ npx skills update setup-project-vault
 
 `setup-project-vault` clones an [Obsidian project vault](https://github.com/jaidetree/obsidian-project-vault) into your repo and wires the engineering skills to use it as the home for ADRs, PRDs, and issues.
 
-It is the vault-first counterpart to [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills): it emits the same `docs/agents/*.md` receipts, so nothing downstream changes — but the tracker it configures is a folder of markdown that Obsidian renders as a kanban board. In that model a ticket's development state **is the folder it sits in**, while its triage role is a frontmatter `tags:` value — the two are orthogonal. ADRs move to `vault/ADRs`.
+It is the vault-first counterpart to [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills): it emits the same `docs/agents/*.md` receipts, so nothing downstream changes — but the tracker it configures is a folder of markdown that Obsidian renders as a kanban board. In that model a ticket's development state **is the folder it sits in**, while its triage role is a frontmatter `tags:` value — the two are orthogonal. ADRs move to `<vault-dir>/ADRs`.
 
 ## When to reach for it
 
@@ -24,17 +24,17 @@ Reach for it **once per repo**, when you want your issues and decisions to live 
 
 ## Prerequisites
 
-None to start — it clones the vault for you. It writes into your repo: a committed `vault/` directory, `docs/agents/*.md` receipts, and an `## Agent skills` block in `CLAUDE.md`/`AGENTS.md`.
+None to start — it clones the vault for you. It writes into your repo: a committed vault directory (named after your repo, e.g. `my-project-vault`), `docs/agents/*.md` receipts, and an `## Agent skills` block in `CLAUDE.md`/`AGENTS.md`.
 
 ## Two things it leaves behind
 
-- **The vault as tracker.** Issues live as markdown under `vault/Projects/<slug>/`. Agents resolve tickets by filename stem (never the folder path, which goes stale as cards move); humans drag cards on the board. New issues land in `Backlog` tagged `ready-for-agent`.
+- **The vault as tracker.** Issues live as markdown under `<vault-dir>/Projects/<slug>/`. Agents resolve tickets by filename stem (never the folder path, which goes stale as cards move); humans drag cards on the board. New issues land in `Backlog` tagged `ready-for-agent`.
 - **A generated `/slice` skill.** A project-local `.claude/skills/slice/SKILL.md`, filled with your build/test/lint commands and module rules, that takes one slice `Ready → In Progress → implement → commit → Review`. It bakes the workflow in so a fresh session doesn't re-learn it — and it owns the folder moves, so the global [implement](https://aihero.dev/skills-implement) skill stays tracker-agnostic.
 
 ## It's working if
 
-- A committed `vault/` appears, with `ADRs/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
-- `docs/agents/*.md` and an `## Agent skills` block exist, with ADRs pointed at `vault/ADRs`.
+- A committed vault directory (e.g. `my-project-vault/`) appears, with `ADRs/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
+- `docs/agents/*.md` and an `## Agent skills` block exist, with ADRs pointed at `<vault-dir>/ADRs`.
 - A `.claude/skills/slice/` skill exists with no `{{...}}` placeholders left in it.
 
 ## Where it fits

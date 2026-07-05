@@ -12,7 +12,7 @@ npx skills update new-vault-project
 
 ## What it does
 
-`new-vault-project` scaffolds a new project directory in the vault (`vault/Projects/<slug>/`) from the bundled template. It runs the `new-project.sh` script from the `setup-project-vault` skill, which copies the template, renames the kanban board file, and repoints the board's `columnRoot` at the new path.
+`new-vault-project` scaffolds a new project directory in the vault from the bundled template. It reads the vault dir name from `docs/agents/issue-tracker.md` (the `vault_dir:` frontmatter field written by `setup-project-vault`), then runs `new-project.sh` to copy the template, rename the kanban board file, and repoint the board's `columnRoot` at the new path.
 
 ## When to reach for it
 
@@ -26,8 +26,8 @@ Reach for it directly (`/new-vault-project <slug>`) when you want to create the 
 
 ## It's working if
 
-- `vault/Projects/<slug>/` was created.
-- `vault/Projects/<slug>/<slug>.base` (the kanban board) is present.
+- `<vault-dir>/Projects/<slug>/` was created.
+- `<vault-dir>/Projects/<slug>/<slug>.base` (the kanban board) is present.
 
 ## Where it fits
 

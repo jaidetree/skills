@@ -75,4 +75,4 @@ Off the main flow entirely.
 
 **`/setup-project-vault`** — vault-first alternative to `/setup-matt-pocock-skills`. Clones an Obsidian project vault into the repo and makes it the home for ADRs, PRDs, and issues (a kanban board where dev state is the folder and triage roles are frontmatter tags). Emits the same `docs/agents/*.md` receipts, and generates a project-local `/slice` skill. Pick this instead of `/setup-matt-pocock-skills` when you want your tracker in Obsidian; pick `/setup-matt-pocock-skills` for GitHub/GitLab/local-markdown tracking.
 
-**`/new-vault-project`** — scaffold a vault project directory (`vault/Projects/<slug>/`). Called automatically by `/to-prd` and `/to-issues` when publishing to the vault tracker; reach for it directly to create a project dir without publishing.
+**`/new-vault-project`** — scaffold a vault project directory (path determined by the project's vault dir, recorded in `docs/agents/issue-tracker.md`). Called automatically by `/to-prd` and `/to-issues` when publishing to the vault tracker; reach for it directly to create a project dir without publishing.
