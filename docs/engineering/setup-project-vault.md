@@ -24,7 +24,7 @@ Reach for it **once per repo**, when you want your issues and decisions to live 
 
 ## Prerequisites
 
-None to start — it clones the vault for you. It writes into your repo: a committed vault directory (named after your repo, e.g. `my-project-vault`), `docs/agents/*.md` receipts, and an `## Agent skills` block in `CLAUDE.md`/`AGENTS.md`.
+None to start — it clones the vault for you. It writes into your repo: a committed vault directory (named after your repo directory with a leading dot, e.g. `.my-project-vault`), `docs/agents/*.md` receipts, and an `## Agent skills` block in `CLAUDE.md`/`AGENTS.md`.
 
 ## Two things it leaves behind
 
@@ -33,7 +33,7 @@ None to start — it clones the vault for you. It writes into your repo: a commi
 
 ## It's working if
 
-- A committed vault directory (e.g. `my-project-vault/`) appears, with `ADRs/`, `Domain/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
+- A committed vault directory (e.g. `.my-project-vault/`) appears, with `ADRs/`, `Domain/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
 - `docs/agents/*.md` and an `## Agent skills` block exist, with the glossary pointed at `<vault-dir>/Domain/CONTEXT.md` and ADRs at `<vault-dir>/ADRs`.
 - A `.claude/skills/slice/` skill exists with no `{{...}}` placeholders left in it.
 

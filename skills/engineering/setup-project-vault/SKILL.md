@@ -20,7 +20,7 @@ Prompt-driven: explore, present, confirm, then write.
 - `CLAUDE.md` / `AGENTS.md` at root — which exists? Existing `## Agent skills` block?
 - `docs/agents/` — prior receipts?
 - Build/test/lint commands (`package.json` scripts, Makefile, etc.) and module/structure conventions — needed to fill the `/slice` skill in step 6.
-- **Derive a vault dir name:** run `git remote get-url origin 2>/dev/null`, strip `.git`, take the last path segment (repo name), suffix with `-vault` (e.g. `my-project-vault`). Fall back to the `name` field in `package.json` if no remote. Present the default to the user — they may override. **Check that no directory with this name already exists** (same confirm-before-overwrite rule as step 2).
+- **Derive a vault dir name:** take the repo's directory name — `basename "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"` — and format it as `.<dir-name>-vault` (leading dot, `-vault` suffix; e.g. `tasky` → `.tasky-vault`). The dot hides the nested vault from any parent Obsidian vault's file explorer while `.<dir-name>-vault` still opens directly as its own, clearly-named vault. **Propose this name and stop for confirmation** — present it as the default and ask the user to confirm it or type a different name before cloning. **Check that no directory with this name already exists** (same confirm-before-overwrite rule as step 2).
 
 ### 2. Clone the vault
 
