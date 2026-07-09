@@ -16,7 +16,7 @@ npx skills update new-vault-project
 
 ## When to reach for it
 
-The agent reaches for it automatically — via the `docs/agents/issue-tracker.md` receipt — whenever `to-prd` or `to-issues` publishes to the vault tracker and the project directory doesn't yet exist.
+The agent reaches for it automatically — via the `docs/agents/issue-tracker.md` receipt — whenever `to-spec` or `to-tickets` publishes to the vault tracker and the project directory doesn't yet exist.
 
 Reach for it directly (`/new-vault-project <slug>`) when you want to create the project directory without publishing a PRD or issues yet.
 
@@ -31,4 +31,4 @@ Reach for it directly (`/new-vault-project <slug>`) when you want to create the 
 
 ## Where it fits
 
-A utility in the `setup-project-vault` chain, called within the `to-prd → to-issues → slice` publishing flow. For the full map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A utility in the `setup-project-vault` chain, called within the `to-spec → to-tickets → slice` publishing flow. For the full map, see [ask-matt](https://aihero.dev/skills-ask-matt).

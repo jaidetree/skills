@@ -1,6 +1,6 @@
 ---
 name: new-vault-project
-description: Scaffold a vault project directory. Use when a skill (to-prd, to-issues) needs to publish to the vault tracker and the project dir doesn't yet exist, or when the user asks to create a new vault project.
+description: Scaffold a vault project directory. Use when a skill (to-spec, to-tickets) needs to publish to the vault tracker and the project dir doesn't yet exist, or when the user asks to create a new vault project.
 ---
 
 # New Vault Project

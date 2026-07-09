@@ -39,4 +39,4 @@ None to start — it clones the vault for you. It writes into your repo: a commi
 
 ## Where it fits
 
-A **run-once setup**, the entry point to the engineering chain (`setup → to-prd → to-issues → slice → code-review`) for repos that track work in Obsidian. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A **run-once setup**, the entry point to the engineering chain (`setup → to-spec → to-tickets → slice → code-review`) for repos that track work in Obsidian. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
