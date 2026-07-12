@@ -9,7 +9,7 @@ Scaffold `<vault-dir>/Projects/<slug>/` from the template using `new-project.sh`
 
 ## Process
 
-1. **Determine the slug** — use the argument if given; otherwise derive from the feature/PRD name (kebab-case, lower-case, hyphens only). Confirm with the user if ambiguous.
+1. **Determine the slug** — use the argument if given; otherwise derive from the feature/spec name (kebab-case, lower-case, hyphens only). Confirm with the user if ambiguous.
 
 2. **Determine the vault dir** — read `docs/agents/issue-tracker.md` and extract the `vault_dir:` frontmatter field. Fall back to `vault` if the file is absent or the field is missing.
 

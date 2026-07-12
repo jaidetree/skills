@@ -18,7 +18,7 @@ npx skills update new-vault-project
 
 The agent reaches for it automatically — via the `docs/agents/issue-tracker.md` receipt — whenever `to-spec` or `to-tickets` publishes to the vault tracker and the project directory doesn't yet exist.
 
-Reach for it directly (`/new-vault-project <slug>`) when you want to create the project directory without publishing a PRD or issues yet.
+Reach for it directly (`/new-vault-project <slug>`) when you want to create the project directory without publishing a spec or issues yet.
 
 ## Prerequisites
 

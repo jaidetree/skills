@@ -4,12 +4,12 @@ vault_dir: {{VAULT_DIR}}
 
 # Issue tracker: Obsidian project vault
 
-Issues and PRDs live as markdown in the vault at `{{VAULT_DIR}}/Projects/<slug>/`. A visual kanban board (Obsidian Bases `.base` file) renders them for humans; agents operate on the files directly.
+Issues and specs (you may know a spec as a PRD) live as markdown in the vault at `{{VAULT_DIR}}/Projects/<slug>/`. A visual kanban board (Obsidian Bases `.base` file) renders them for humans; agents operate on the files directly.
 
 ## Conventions
 
-- One feature/PRD per dir: `{{VAULT_DIR}}/Projects/<slug>/`. Create with `./new-project.sh <slug>` (from the `setup-project-vault` skill folder).
-- PRD: `{{VAULT_DIR}}/Projects/<slug>/PRD.md`.
+- One feature/spec per dir: `{{VAULT_DIR}}/Projects/<slug>/`. Create with `./new-project.sh <slug>` (from the `setup-project-vault` skill folder).
+- Spec: `{{VAULT_DIR}}/Projects/<slug>/Spec.md`.
 - Issues/slices: `{{VAULT_DIR}}/Projects/<slug>/issues/<Status>/<NN>-<slug>.md`.
 - **Dev state = the folder** the file sits in: `Backlog / Ready / In Progress / Review / Done / Archived`. Moving the file between these folders is the status change.
 - **Triage role = frontmatter `tags:`** (e.g. `ready-for-agent`) — see `triage-labels.md`. Orthogonal to dev state.
@@ -19,11 +19,11 @@ Issues and PRDs live as markdown in the vault at `{{VAULT_DIR}}/Projects/<slug>/
 
 Issue body template: `{{VAULT_DIR}}/Templates/Issue Template.md` (Description / User Stories / Implementation Plan Overview / Acceptance Criteria).
 
-## When a skill says "publish a PRD"
+## When a skill says "publish a spec" (or a PRD)
 
-1. Derive the project slug from the PRD/feature title (kebab-case). Confirm if ambiguous.
+1. Derive the project slug from the spec/feature title (kebab-case). Confirm if ambiguous.
 2. Invoke `/new-vault-project <slug>` to scaffold `{{VAULT_DIR}}/Projects/<slug>/` if it doesn't exist.
-3. Write the PRD content to `{{VAULT_DIR}}/Projects/<slug>/PRD.md`.
+3. Write the spec content to `{{VAULT_DIR}}/Projects/<slug>/Spec.md`.
 
 ## When a skill says "publish an issue"
 

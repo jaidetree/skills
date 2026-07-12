@@ -1,12 +1,12 @@
 ---
 name: setup-project-vault
-description: Configure this repo to use an Obsidian project vault — clone the vault, optionally make it the issue tracker, and wire ADRs/PRDs/issues into it. Vault-first alternative to setup-matt-pocock-skills. Run once per repo.
+description: Configure this repo to use an Obsidian project vault — clone the vault, optionally make it the issue tracker, and wire ADRs/specs/issues into it. Vault-first alternative to setup-matt-pocock-skills. Run once per repo.
 disable-model-invocation: true
 ---
 
 # Setup Project Vault
 
-Clone an [Obsidian project vault](https://github.com/jaidetree/obsidian-project-vault) into this repo and wire the engineering skills to it. The vault is a human-friendly (Obsidian) + agent-friendly home for ADRs, PRDs, and issues.
+Clone an [Obsidian project vault](https://github.com/jaidetree/obsidian-project-vault) into this repo and wire the engineering skills to it. The vault is a human-friendly (Obsidian) + agent-friendly home for ADRs, specs, and issues.
 
 Emits the same `docs/agents/*.md` receipts as `setup-matt-pocock-skills`, so consuming skills need no changes.
 
@@ -30,7 +30,7 @@ The vault hosts `<vault-dir>/ADRs/`, `<vault-dir>/Knowledge/`, `<vault-dir>/Libr
 
 ### 3. Ask: use the vault as the issue tracker?
 
-> Explainer: If yes, PRDs and issues live in the vault as markdown under `<vault-dir>/Projects/<slug>/`, with a visual kanban board (Obsidian Bases). If no, keep tracking issues on GitHub/GitLab/local markdown — the vault is still the home for ADRs and knowledge notes.
+> Explainer: If yes, specs and issues live in the vault as markdown under `<vault-dir>/Projects/<slug>/`, with a visual kanban board (Obsidian Bases). If no, keep tracking issues on GitHub/GitLab/local markdown — the vault is still the home for ADRs and knowledge notes.
 
 Default: **yes**.
 
@@ -81,4 +81,4 @@ Copy [slice-template.md](./slice-template.md) → `.claude/skills/slice/SKILL.md
 
 ### 8. Done
 
-Tell the user setup is complete. New PRDs/features get a project dir via `./new-project.sh <slug> <vault-dir>`. They can edit `docs/agents/*.md` and the vault dir directly; re-run only to switch trackers or restart.
+Tell the user setup is complete. New specs/features get a project dir via `./new-project.sh <slug> <vault-dir>`. They can edit `docs/agents/*.md` and the vault dir directly; re-run only to switch trackers or restart.
