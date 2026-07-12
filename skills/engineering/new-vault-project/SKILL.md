@@ -11,7 +11,7 @@ Scaffold `<vault-dir>/Projects/<slug>/` from the template using `new-project.sh`
 
 1. **Determine the slug** — use the argument if given; otherwise derive from the feature/spec name (kebab-case, lower-case, hyphens only). Confirm with the user if ambiguous.
 
-2. **Determine the vault dir** — read `docs/agents/issue-tracker.md` and extract the `vault_dir:` frontmatter field. Fall back to `vault` if the file is absent or the field is missing.
+2. **Determine the vault dir** — read `docs/agents/vault.md` and extract the `vault_dir:` frontmatter field. If that file is absent, the repo has no vault: tell the user to run `/setup-project-vault` and stop. Never guess a dir name.
 
 3. **Check existence** — if `<vault-dir>/Projects/<slug>/` already exists, stop and report it.
 

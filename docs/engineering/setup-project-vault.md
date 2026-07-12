@@ -14,7 +14,7 @@ npx skills update setup-project-vault
 
 `setup-project-vault` clones an [Obsidian project vault](https://github.com/jaidetree/obsidian-project-vault) into your repo and wires the engineering skills to use it as the home for ADRs, specs, and issues.
 
-It is the vault-first counterpart to [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills): it emits the same `docs/agents/*.md` receipts, so nothing downstream changes — but the tracker it configures is a folder of markdown that Obsidian renders as a kanban board. In that model a ticket's development state **is the folder it sits in**, while its triage role is a frontmatter `tags:` value — the two are orthogonal. The glossary moves to `<vault-dir>/Domain/CONTEXT.md` and ADRs to `<vault-dir>/ADRs`.
+It is the vault-first counterpart to [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills): it emits the same `docs/agents/*.md` receipts (plus one of its own, `vault.md`, recording where the vault lives), so nothing downstream changes — but the tracker it configures is a folder of markdown that Obsidian renders as a kanban board. In that model a ticket's development state **is the folder it sits in**, while its triage role is a frontmatter `tags:` value — the two are orthogonal. The glossary moves to `<vault-dir>/Domain/CONTEXT.md` and ADRs to `<vault-dir>/ADRs`.
 
 ## When to reach for it
 
@@ -35,6 +35,7 @@ None to start — it clones the vault for you. It writes into your repo: a commi
 
 - A committed vault directory (e.g. `.my-project-vault/`) appears, with `ADRs/`, `Domain/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
 - `docs/agents/*.md` and an `## Agent skills` block exist, with the glossary pointed at `<vault-dir>/Domain/CONTEXT.md` and ADRs at `<vault-dir>/ADRs`.
+- `docs/agents/vault.md` names your vault dir in its `vault_dir:` frontmatter — this is how `/knowledge` and `/new-vault-project` find the vault.
 - A `.claude/skills/slice/` skill exists with no `{{...}}` placeholders left in it.
 
 ## Where it fits

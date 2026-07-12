@@ -1,7 +1,3 @@
----
-vault_dir: {{VAULT_DIR}}
----
-
 # Issue tracker: Obsidian project vault
 
 Issues and specs (you may know a spec as a PRD) live as markdown in the vault at `{{VAULT_DIR}}/Projects/<slug>/`. A visual kanban board (Obsidian Bases `.base` file) renders them for humans; agents operate on the files directly.
