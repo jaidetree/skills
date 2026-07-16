@@ -24,4 +24,4 @@ Scaffold `<vault-dir>/Projects/<slug>/` from the template using `new-project.sh`
    bash <script-path> <slug> <vault-dir>
    ```
 
-6. **Confirm** — `<vault-dir>/Projects/<slug>/` exists and `<vault-dir>/Projects/<slug>/<slug>.base` is present. Report the created path.
+6. **Confirm** — `<vault-dir>/Projects/<slug>/` exists and `<vault-dir>/Projects/<slug>/Project Board.base` is present. Report the created path.
