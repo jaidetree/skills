@@ -56,7 +56,7 @@ Do each applicable item below, then confirm all are done before moving on:
 - Ensure the project `.gitignore` ignores `<vault-dir>/.obsidian/workspace*` (create `.gitignore` if absent).
 - Commit the vault into the repo (files only — `.git` already stripped).
 
-Then, **if vault is tracker**, generate the project-local `/slice` skill (step 7).
+Then, **if vault is tracker**, generate the project-local `/slice` and `/afk` skills (step 7).
 
 The block:
 
@@ -80,9 +80,10 @@ The block:
 [one-line: single/multi-context, glossary at `<vault-dir>/Domain/CONTEXT.md`, ADRs at `<vault-dir>/ADRs`]. See `docs/agents/domain.md`.
 ```
 
-### 7. Generate the `/slice` skill (only if vault is tracker)
+### 7. Generate the project skills (only if vault is tracker)
 
-Copy [slice-template.md](./slice-template.md) → `.claude/skills/slice/SKILL.md`. Fill every `{{...}}` placeholder from what step 1 found: `{{VAULT_DIR}}` (the chosen vault dir name), `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, build/test/lint commands, and module rules. This bakes the vault workflow + project specifics into one skill so fresh sessions don't re-learn it.
+- Copy [slice-template.md](./slice-template.md) → `.claude/skills/slice/SKILL.md`. Fill every `{{...}}` placeholder from what step 1 found: `{{VAULT_DIR}}` (the chosen vault dir name), `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, build/test/lint commands, and module rules. This bakes the vault workflow + project specifics into one skill so fresh sessions don't re-learn it.
+- Copy [run-project-template.md](./run-project-template.md) → `.claude/skills/afk/SKILL.md`. Fill `{{VAULT_DIR}}`, `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, and the same build/test/lint placeholders as `/slice` (it delegates verification to `/slice` per ticket rather than restating them). This is the loop that drives the whole project's frontier of AFK-ready tickets to completion in one session, dispatching `/slice` to a subagent per ticket.
 
 ### 8. Done
 

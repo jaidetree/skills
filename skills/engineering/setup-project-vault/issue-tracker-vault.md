@@ -40,6 +40,6 @@ Driven by `/slice` (which wraps `/implement`), not by triage:
 - **Claim / start work**: move `Ready` → `In Progress`.
 - **Finish**: move `In Progress` → `Review`. Only a human moves `Review` → `Done`.
 
-## Frontier (wayfinder-ready; skill not yet wired)
+## Frontier (wayfinder-ready)
 
-Issues in `Ready/` whose every `blocked_by` stem resolves to a file now in `Done/`. First by number wins.
+Issues in `Ready/` whose every `blocked_by` stem resolves to a file now in `Done/`. Wired by the generated `/afk` skill, which ships the whole frontier per round and recomputes it after each merge.

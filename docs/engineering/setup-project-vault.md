@@ -26,18 +26,19 @@ Reach for it **once per repo**, when you want your issues and decisions to live 
 
 None to start — it clones the vault for you. It writes into your repo: a committed vault directory (named after your repo directory with a leading dot, e.g. `.my-project-vault`), `docs/agents/*.md` receipts, and an `## Agent skills` block in `CLAUDE.md`/`AGENTS.md`.
 
-## Two things it leaves behind
+## Three things it leaves behind
 
 - **The vault as tracker.** Issues live as markdown under `<vault-dir>/Projects/<slug>/`. Agents resolve tickets by filename stem (never the folder path, which goes stale as cards move); humans drag cards on the board. New issues land in `Backlog` tagged `ready-for-agent`.
 - **A generated `/slice` skill.** A project-local `.claude/skills/slice/SKILL.md`, filled with your build/test/lint commands and module rules, that takes one slice `Ready → In Progress → implement → commit → Review`. It bakes the workflow in so a fresh session doesn't re-learn it — and it owns the folder moves, so the global [implement](https://aihero.dev/skills-implement) skill stays tracker-agnostic.
+- **A generated `/afk` skill.** A project-local `.claude/skills/afk/SKILL.md` that drives the whole project unattended: each round, it finds the frontier of `ready-for-agent` tickets unblocked by every dependency, dispatches one subagent per ticket (isolated in its own git worktree) to run `/slice` and then close the loop itself — checking acceptance criteria and moving `Review → Done` — merges each result back, and recomputes the frontier. Repeats until nothing AFK-ready is left, then writes one project-wide `MANUAL-TESTING.md` instead of leaving manual testing scattered per ticket.
 
 ## It's working if
 
 - A committed vault directory (e.g. `.my-project-vault/`) appears, with `ADRs/`, `Domain/`, `Knowledge/`, `Library/`, and (if it's your tracker) `Projects/`.
 - `docs/agents/*.md` and an `## Agent skills` block exist, with the glossary pointed at `<vault-dir>/Domain/CONTEXT.md` and ADRs at `<vault-dir>/ADRs`.
 - `docs/agents/vault.md` names your vault dir in its `vault_dir:` frontmatter — this is how `/knowledge` and `/new-vault-project` find the vault.
-- A `.claude/skills/slice/` skill exists with no `{{...}}` placeholders left in it.
+- A `.claude/skills/slice/` skill and a `.claude/skills/afk/` skill both exist with no `{{...}}` placeholders left in them.
 
 ## Where it fits
 
-A **run-once setup**, the entry point to the engineering chain (`setup → to-spec → to-tickets → slice → code-review`) for repos that track work in Obsidian. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A **run-once setup**, the entry point to the engineering chain (`setup → to-spec → to-tickets → slice → code-review`) for repos that track work in Obsidian — or `afk` in place of a run of individual `slice`s, when you want the whole ticket backlog driven unattended. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
