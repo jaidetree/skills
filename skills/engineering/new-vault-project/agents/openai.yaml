@@ -1,0 +1,3 @@
+interface:
+  display_name: "New Vault Project"
+  short_description: "Scaffold a vault project directory"

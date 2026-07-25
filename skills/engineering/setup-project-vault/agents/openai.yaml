@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Project Vault"
+  short_description: "Configure a repo to use a vault"
+policy:
+  allow_implicit_invocation: false
