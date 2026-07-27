@@ -24,7 +24,8 @@ the target is ambiguous, stop and ask.
 
 ## Steps
 
-1. Read `LEARNINGS.md` if it exists; surface the most relevant points.
+1. Read a knowledge summary: `scan-knowledge.sh {{VAULT_DIR}}/Knowledge` (from
+   the `knowledge` skill); surface the most relevant points.
 2. Read the slice file, plus its spec (`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/Spec.md`),
    `{{VAULT_DIR}}/Domain/CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
    found — report what failed.
@@ -39,6 +40,7 @@ the target is ambiguous, stop and ask.
 7. Move the slice file `In Progress` → `Review` — this signals it awaits human
    testing. Check off the acceptance-criteria `- [ ]` boxes that now hold. Only
    a human moves it to `Done`.
-8. Run `/update-learnings` to capture what worked, what broke, and non-obvious
-   domain facts. Be selective.
+8. Run `/knowledge` to record findings — what worked, what broke, and
+   non-obvious domain facts — as notes in `{{VAULT_DIR}}/Knowledge/`. Be
+   selective.
 9. Report a list of manual testing steps for humans.

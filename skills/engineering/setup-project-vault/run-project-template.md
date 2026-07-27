@@ -30,7 +30,8 @@ what's safe to hand to subagents in parallel, because none blocks another.
 
 ## Steps
 
-1. Read `LEARNINGS.md` if it exists; surface the most relevant points.
+1. Read a knowledge summary: `scan-knowledge.sh {{VAULT_DIR}}/Knowledge` (from
+   the `knowledge` skill); surface the most relevant points.
 2. Compute the frontier (see above).
 3. **Empty frontier?**
    - `Backlog/` holds tickets: they need `/triage` before they're workable.
