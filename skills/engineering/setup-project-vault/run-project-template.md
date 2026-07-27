@@ -22,21 +22,23 @@ guide — never per ticket.
 
 ## The frontier
 
-A ticket is **frontier** when it sits in
-`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/issues/Ready/`, carries the
-`ready-for-agent` tag, and every `blocked_by` stem resolves to a file now in
-`.../Done/`. Frontier tickets need nothing from a human — they're exactly
-what's safe to hand to subagents in parallel, because none blocks another.
+A ticket is **frontier** when it carries the `ready-for-agent` tag and every
+`blocked_by` stem resolves to a file now in `.../Done/`. Compute it from
+`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/issues/Ready/`; only if `Ready/` holds
+no frontier-eligible ticket, compute it from `Backlog/` instead. Frontier
+tickets need nothing from a human — they're exactly what's safe to hand to
+subagents in parallel, because none blocks another.
 
 ## Steps
 
 1. Read a knowledge summary: `scan-knowledge.sh {{VAULT_DIR}}/Knowledge` (from
    the `knowledge` skill); surface the most relevant points.
-2. Compute the frontier (see above).
+2. Compute the frontier (see above): `Ready/` first, `Backlog/` if `Ready/` is
+   empty of frontier-eligible tickets.
 3. **Empty frontier?**
-   - `Backlog/` holds tickets: they need `/triage` before they're workable.
-     Report the count and stop.
-   - `Backlog/` is empty (or holds only tickets not tagged `ready-for-agent`):
+   - `Backlog/` holds tickets not tagged `ready-for-agent`: they need
+     `/triage` before they're workable. Report the count and stop.
+   - `Backlog/` is also empty (or every remaining ticket there is blocked):
      the project is complete — **skip to step 8**.
 4. **Dispatch the whole frontier in one message** — one subagent per ticket,
    each `isolation: worktree`. Parallel dispatch is safe precisely because

@@ -29,7 +29,8 @@ the target is ambiguous, stop and ask.
 2. Read the slice file, plus its spec (`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/Spec.md`),
    `{{VAULT_DIR}}/Domain/CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
    found — report what failed.
-3. Move the slice file `Ready` → `In Progress` (folder = dev state; see
+3. Move the slice file (from `Ready` or, if `/afk` dispatched it straight from
+   `Backlog`, from `Backlog`) → `In Progress` (folder = dev state; see
    `docs/agents/issue-tracker.md`).
 4. `/implement` the slice as specified. Follow project conventions:
    {{MODULE_RULES}}. Write/update tests at the seams the issue names.
