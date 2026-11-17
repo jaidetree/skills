@@ -42,7 +42,7 @@ The five canonical roles come from `../setup-matt-pocock-skills/triage-labels.md
 
 ### 5. Confirm domain layout
 
-Single-context (`CONTEXT.md` + ADRs) or multi-context (`CONTEXT-MAP.md`). In the vault, the glossary lives at `<vault-dir>/Domain/CONTEXT.md` (multi-context: `<vault-dir>/Domain/CONTEXT-MAP.md` plus one `CONTEXT.md` per context under `Domain/`) and ADRs live at `<vault-dir>/ADRs`.
+Single-context (`GLOSSARY.md` + ADRs) or multi-context (`GLOSSARY-MAP.md`). In the vault, the glossary lives at `<vault-dir>/Domain/GLOSSARY.md` (multi-context: `<vault-dir>/Domain/GLOSSARY-MAP.md` plus one `GLOSSARY.md` per context under `Domain/`) and ADRs live at `<vault-dir>/ADRs`.
 
 ### 6. Write receipts + wire git
 
@@ -50,7 +50,7 @@ Do each applicable item below, then confirm all are done before moving on:
 
 - `docs/agents/vault.md` — from [vault.md](./vault.md); substitute every `{{VAULT_DIR}}` with the chosen vault dir name. **Always write this**, whatever the tracker choice — it is how every other skill finds the vault.
 - `docs/agents/triage-labels.md` — copy `../setup-matt-pocock-skills/triage-labels.md`; note roles are applied as frontmatter `tags:`, not tracker labels.
-- `docs/agents/domain.md` — copy `../setup-matt-pocock-skills/domain.md`, then rewrite its file-structure trees so the glossary sits under `<vault-dir>/Domain/` (`CONTEXT.md`, or `CONTEXT-MAP.md` + one `CONTEXT.md` per context — not the repo root) and ADRs sit in one `<vault-dir>/ADRs` dir (no per-context `src/<context>/docs/adr/`). Leave the consumer rules (glossary use, ADR-conflict flagging) unchanged.
+- `docs/agents/domain.md` — copy `../setup-matt-pocock-skills/domain.md`, then rewrite its file-structure trees so the glossary sits under `<vault-dir>/Domain/` (`GLOSSARY.md`, or `GLOSSARY-MAP.md` + one `GLOSSARY.md` per context — not the repo root) and ADRs sit in one `<vault-dir>/ADRs` dir (no per-context `src/<context>/docs/adr/`). Leave the consumer rules (glossary use, ADR-conflict flagging) unchanged.
 - **If vault is tracker:** `docs/agents/issue-tracker.md` from [issue-tracker-vault.md](./issue-tracker-vault.md) — substitute every `{{VAULT_DIR}}` with the chosen vault dir name before writing.
 - `## Agent skills` block in `CLAUDE.md`/`AGENTS.md` (see below). Same selection rules as `setup-matt-pocock-skills`: edit the file that exists; if neither, ask which to create; update an existing block in place.
 - Ensure the project `.gitignore` ignores `<vault-dir>/.obsidian/workspace*` (create `.gitignore` if absent).
@@ -77,7 +77,7 @@ The block:
 
 ### Domain docs
 
-[one-line: single/multi-context, glossary at `<vault-dir>/Domain/CONTEXT.md`, ADRs at `<vault-dir>/ADRs`]. See `docs/agents/domain.md`.
+[one-line: single/multi-context, glossary at `<vault-dir>/Domain/GLOSSARY.md`, ADRs at `<vault-dir>/ADRs`]. See `docs/agents/domain.md`.
 ```
 
 ### 7. Generate the project skills (only if vault is tracker)

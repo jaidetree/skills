@@ -27,7 +27,7 @@ the target is ambiguous, stop and ask.
 1. Read a knowledge summary: `scan-knowledge.sh {{VAULT_DIR}}/Knowledge` (from
    the `knowledge` skill); surface the most relevant points.
 2. Read the slice file, plus its spec (`{{VAULT_DIR}}/Projects/{{PROJECT_SLUG}}/Spec.md`),
-   `{{VAULT_DIR}}/Domain/CONTEXT.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
+   `{{VAULT_DIR}}/Domain/GLOSSARY.md`, and any `{{VAULT_DIR}}/ADRs` it touches. Stop if the issue isn't
    found — report what failed.
 3. Move the slice file (from `Ready` or, if `/afk` dispatched it straight from
    `Backlog`, from `Backlog`) → `In Progress` (folder = dev state; see

@@ -26,7 +26,7 @@ None up front. The skill writes into two places and creates both lazily:
 - **`GLOSSARY.md`** at the repo root. The skill creates it when you settle the first term. In a repo with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
 - **`docs/adr/`**. The skill creates it with the first ADR that clears the bar.
 
-Those are defaults: when `docs/agents/domain.md` records other locations — a vault project keeps the glossary at `<vault-dir>/Domain/CONTEXT.md` and ADRs at `<vault-dir>/ADRs` — the skill reads and writes there instead.
+Those are defaults: when `docs/agents/domain.md` records other locations — a vault project keeps the glossary at `<vault-dir>/Domain/GLOSSARY.md` and ADRs at `<vault-dir>/ADRs` — the skill reads and writes there instead.
 
 Nothing needs to exist before you start, and the skill creates nothing in advance.
 
