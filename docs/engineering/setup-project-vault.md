@@ -41,4 +41,4 @@ None to start — it clones the vault for you. It writes into your repo: a commi
 
 ## Where it fits
 
-A **run-once setup**, the entry point to the engineering chain (`setup → to-spec → to-tickets → slice → code-review`) for repos that track work in Obsidian — or `afk` in place of a run of individual `slice`s, when you want the whole ticket backlog driven unattended. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A **run-once setup**, the entry point to the engineering chain (`setup → to-spec → to-tickets → to-workflow → slice → code-review`) for repos that track work in Obsidian, or `afk` in place of a run of individual `slice`s, when you want the whole ticket backlog driven unattended. Its sibling is [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills), the same bootstrap for GitHub/GitLab/local trackers — choose by where you want your issues to live. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).

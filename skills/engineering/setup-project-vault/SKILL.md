@@ -87,4 +87,4 @@ The block:
 
 ### 8. Done
 
-Tell the user setup is complete. New specs/features get a project dir via `./new-project.sh <slug> <vault-dir>`. They can edit `docs/agents/*.md` and the vault dir directly; re-run only to switch trackers or restart.
+Tell the user setup is complete. New specs/features get a project dir via `./new-project.sh <slug> <vault-dir>`. Fill each project's `Workflow.md` with `/to-workflow` before `/afk`. They can edit `docs/agents/*.md` and the vault dir directly; re-run only to switch trackers or restart.

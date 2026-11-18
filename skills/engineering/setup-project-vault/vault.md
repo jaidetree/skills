@@ -13,7 +13,7 @@ This repo has an [Obsidian project vault](https://github.com/jaidetree/obsidian-
 - `{{VAULT_DIR}}/Knowledge/` — standalone zettel notes, one per learning, flat (no subfolders). Written and recalled by `/knowledge`.
 - `{{VAULT_DIR}}/Library/` — reference material worth keeping alongside the code.
 - `{{VAULT_DIR}}/Domain/`, `{{VAULT_DIR}}/ADRs/` — glossary and architectural decisions. See `domain.md`.
-- `{{VAULT_DIR}}/Projects/<slug>/` — specs and issues, **only if** the vault is this repo's issue tracker. See `issue-tracker.md` (absent if it isn't).
+- `{{VAULT_DIR}}/Projects/<slug>/` — spec, `Workflow.md`, and issues, **only if** the vault is this repo's issue tracker. See `issue-tracker.md` (absent if it isn't).
 - `{{VAULT_DIR}}/Templates/` — note templates the vault's own skills copy from.
 
 ## If this file is absent

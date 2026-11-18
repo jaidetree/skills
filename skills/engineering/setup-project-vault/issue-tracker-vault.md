@@ -6,6 +6,7 @@ Issues and specs (you may know a spec as a PRD) live as markdown in the vault at
 
 - One feature/spec per dir: `{{VAULT_DIR}}/Projects/<slug>/`. Create with `./new-project.sh <slug>` (from the `setup-project-vault` skill folder).
 - Spec: `{{VAULT_DIR}}/Projects/<slug>/Spec.md`.
+- Workflow: `{{VAULT_DIR}}/Projects/<slug>/Workflow.md`. Filled by `/to-workflow`. `/afk` and `/slice` follow it. An unfilled template (placeholder sentences still in the headings) means `/afk` stops and tells the user to run `/to-workflow`.
 - Issues/slices: `{{VAULT_DIR}}/Projects/<slug>/issues/<Status>/<NN>-<slug>.md`.
 - **Dev state = the folder** the file sits in: `Backlog / Ready / In Progress / Review / Done / Archived`. Moving the file between these folders is the status change.
 - **Triage role = frontmatter `tags:`** (e.g. `ready-for-agent`) — see `triage-labels.md`. Orthogonal to dev state.

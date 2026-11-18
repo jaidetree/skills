@@ -24,4 +24,4 @@ Scaffold `<vault-dir>/Projects/<slug>/` from the template using `new-project.sh`
    bash <script-path> <slug> <vault-dir>
    ```
 
-6. **Confirm** — `<vault-dir>/Projects/<slug>/` exists and `<vault-dir>/Projects/<slug>/Project Board.base` is present. Report the created path.
+6. **Confirm** — `<vault-dir>/Projects/<slug>/` exists and both `<vault-dir>/Projects/<slug>/Project Board.base` and `<vault-dir>/Projects/<slug>/Workflow.md` are present. Report the created path. Fill `Workflow.md` with `/to-workflow` before `/afk`.

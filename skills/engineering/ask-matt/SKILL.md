@@ -22,7 +22,7 @@ The route most work travels. You have an idea and want it built.
    - **`/prototype`** to answer the question with throwaway code,
    - **`/handoff`** back what you learned, and reference it from the original idea thread.
 3. **Branch: is this a multi-session build?**
-   - **Yes** → **`/to-spec`** (turn the thread into a spec), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. Then work the tickets one of two ways:
+   - **Yes** → **`/to-spec`** (turn the thread into a spec), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. On a vault tracker, **`/to-workflow`** next: it grills the **waves**, cheap per-ticket checks, and one verification **gate** into `Projects/<slug>/Workflow.md`. Then work the tickets one of two ways:
      - **`/implement`** per ticket, **`/clear`ing context between each one**. On a local tracker that's one file per ticket under `.scratch/<feature>/issues/`, worked blockers-first by hand; on a real tracker the edges become native blocking links, so any ticket whose blockers are done can be grabbed. Each ticket is self-contained, so the last one's context is disposable.
      - **`/implement-spec`** for the whole spec in one run. It reads the tickets as a **task graph**, runs implementer subagents across the ready **frontier** in parallel, and lands everything on one **integration branch**. Reach for it when you'd rather orchestrate the build than drive each ticket yourself.
    - **No** → **`/implement`** right here, in the same context window.
@@ -35,7 +35,7 @@ The route most work travels. You have an idea and want it built.
 
 ### Context hygiene
 
-Keep steps 1–3 in **one unbroken context window** (don't compact or clear until after `/to-tickets`) so the grilling, spec, and tickets all build on the same thinking. Each `/implement` then starts fresh, working from the ticket. Run `/retro` in the session it's looking back on, before you clear; after clearing, point it at that session's log instead.
+Keep steps 1–3 in **one unbroken context window** (don't compact or clear until after `/to-tickets`, and keep `/to-workflow` in that window when the tracker is the vault) so the grilling, spec, tickets, and waves all build on the same thinking. Each `/implement` then starts fresh, working from the ticket. Run `/retro` in the session it's looking back on, before you clear; after clearing, point it at that session's log instead.
 
 The limit on this is the **[smart zone](https://www.aihero.dev/ai-coding-dictionary/smart-zone)**: the window (~150k tokens on state-of-the-art models) within which the model still reasons sharply. If a session approaches it before `/to-tickets`, don't push on degraded; `/compact` at the nearest phase boundary and carry on (see Phase boundaries).
 
@@ -51,7 +51,7 @@ A starting situation that generates work, then merges onto the main flow.
 
 - **A huge, foggy effort: a greenfield project or a huge feature build, too big for one session** → **`/wayfinder`**, the most cognitively demanding flow here. When the way from here to the destination isn't visible yet, it charts a **shared map** of **decision tickets** on the issue tracker and resolves them one at a time, producing **decisions, not deliverables**, until the fog is pushed back and the way is clear. Where **`/grill-with-docs`** sharpens an idea you can hold in one session, wayfinder is for the idea you can't, and it's slower and denser, so save it for exactly that, never a well-scoped feature.
 
-  When the map clears, **it hands off, it doesn't build**: merge onto the main flow at **`/to-spec`**, which collapses the map's linked decisions into a buildable plan, then `/to-tickets` and `/implement` as usual. Looping the map straight into `/implement` skips that collapse and throws the linked detail away, so go straight to `/implement` only when the effort turned out genuinely small.
+  When the map clears, **it hands off, it doesn't build**: merge onto the main flow at **`/to-spec`**, which collapses the map's linked decisions into a buildable plan, then `/to-tickets` (and `/to-workflow` on a vault tracker) and `/implement` as usual. Looping the map straight into `/implement` skips that collapse and throws the linked detail away, so go straight to `/implement` only when the effort turned out genuinely small.
 
 ## Codebase health
 
@@ -99,3 +99,5 @@ Off the main flow entirely.
 **`/setup-project-vault`** — vault-first alternative to `/setup-matt-pocock-skills`. Clones an Obsidian project vault into the repo and makes it the home for ADRs, specs, and issues (a kanban board where dev state is the folder and triage roles are frontmatter tags). Emits the same `docs/agents/*.md` receipts, and generates two project-local skills: `/slice`, for one ticket at a time (stops at `Review` for a human to test), and `/afk`, which drives the whole ready-for-agent backlog to `Done` unattended — dispatching a `/slice` subagent per unblocked ticket each round, each closing its own loop past `Review` — then leaves one project-wide manual-testing guide instead of per-ticket review. Pick this instead of `/setup-matt-pocock-skills` when you want your tracker in Obsidian; pick `/setup-matt-pocock-skills` for GitHub/GitLab/local-markdown tracking.
 
 **`/new-vault-project`** — scaffold a vault project directory (path determined by the project's vault dir, recorded in `docs/agents/issue-tracker.md`). Called automatically by `/to-spec` and `/to-tickets` when publishing to the vault tracker; reach for it directly to create a project dir without publishing.
+
+**`/to-workflow`** — after `/to-tickets` on a vault project, before `/afk` or `/ship`. Grills **waves** of parallel tickets, cheap per-ticket checks, and one **gate** into `Workflow.md`. `/afk` stops if that file is still the template.

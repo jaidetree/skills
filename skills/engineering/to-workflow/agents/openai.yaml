@@ -1,0 +1,5 @@
+interface:
+  display_name: "To Workflow"
+  short_description: "Grill waves and a verification gate into Workflow.md"
+policy:
+  allow_implicit_invocation: false
