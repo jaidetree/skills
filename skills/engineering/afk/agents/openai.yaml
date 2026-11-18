@@ -1,0 +1,5 @@
+interface:
+  display_name: "AFK"
+  short_description: "Unattended vault project from Workflow.md waves"
+policy:
+  allow_implicit_invocation: false

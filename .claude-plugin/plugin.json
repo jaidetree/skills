@@ -31,6 +31,8 @@
     "./skills/engineering/to-spec",
     "./skills/engineering/to-tickets",
     "./skills/engineering/to-workflow",
+    "./skills/engineering/slice",
+    "./skills/engineering/afk",
     "./skills/engineering/wayfinder",
     "./skills/engineering/implement",
     "./skills/engineering/implement-spec",

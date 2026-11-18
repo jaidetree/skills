@@ -19,7 +19,7 @@ Prompt-driven: explore, present, confirm, then write.
 - `git remote -v` — GitHub? GitLab? none?
 - `CLAUDE.md` / `AGENTS.md` at root — which exists? Existing `## Agent skills` block?
 - `docs/agents/` — prior receipts?
-- Build/test/lint commands (`package.json` scripts, Makefile, etc.) and module/structure conventions — needed to fill the `/slice` skill in step 6.
+- Build/test/lint commands (`package.json` scripts, Makefile, etc.) and module/structure conventions: useful later for `/to-workflow`, not copied into a skill.
 - **Derive a vault dir name:** take the repo's directory name — `basename "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"` — and format it as `.<dir-name>-vault` (leading dot, `-vault` suffix; e.g. `tasky` → `.tasky-vault`). The dot hides the nested vault from any parent Obsidian vault's file explorer while `.<dir-name>-vault` still opens directly as its own, clearly-named vault. **Propose this name and stop for confirmation** — present it as the default and ask the user to confirm it or type a different name before cloning. **Check that no directory with this name already exists** (same confirm-before-overwrite rule as step 2).
 
 ### 2. Clone the vault
@@ -56,8 +56,6 @@ Do each applicable item below, then confirm all are done before moving on:
 - Ensure the project `.gitignore` ignores `<vault-dir>/.obsidian/workspace*` (create `.gitignore` if absent).
 - Commit the vault into the repo (files only — `.git` already stripped).
 
-Then, **if vault is tracker**, generate the project-local `/slice` and `/afk` skills (step 7).
-
 The block:
 
 ```markdown
@@ -80,11 +78,8 @@ The block:
 [one-line: single/multi-context, glossary at `<vault-dir>/Domain/GLOSSARY.md`, ADRs at `<vault-dir>/ADRs`]. See `docs/agents/domain.md`.
 ```
 
-### 7. Generate the project skills (only if vault is tracker)
-
-- Copy [slice-template.md](./slice-template.md) → `.claude/skills/slice/SKILL.md`. Fill every `{{...}}` placeholder from what step 1 found: `{{VAULT_DIR}}` (the chosen vault dir name), `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, build/test/lint commands, and module rules. This bakes the vault workflow + project specifics into one skill so fresh sessions don't re-learn it.
-- Copy [run-project-template.md](./run-project-template.md) → `.claude/skills/afk/SKILL.md`. Fill `{{VAULT_DIR}}`, `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, and the same build/test/lint placeholders as `/slice` (it delegates verification to `/slice` per ticket rather than restating them). This is the loop that drives the whole project's frontier of AFK-ready tickets to completion in one session, dispatching `/slice` to a subagent per ticket.
-
-### 8. Done
+### 7. Done
 
 Tell the user setup is complete. New specs/features get a project dir via `./new-project.sh <slug> <vault-dir>`. Fill each project's `Workflow.md` with `/to-workflow` before `/afk`. They can edit `docs/agents/*.md` and the vault dir directly; re-run only to switch trackers or restart.
+
+If `.claude/skills/slice/` or `.claude/skills/afk/` exist from an older generated copy, tell the user they are superseded by the static `/slice` and `/afk` skills. Offer to delete those directories after they have copied any baked commands into `Workflow.md` via `/to-workflow`.

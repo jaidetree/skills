@@ -22,7 +22,8 @@ The route most work travels. You have an idea and want it built.
    - **`/prototype`** to answer the question with throwaway code,
    - **`/handoff`** back what you learned, and reference it from the original idea thread.
 3. **Branch: is this a multi-session build?**
-   - **Yes** → **`/to-spec`** (turn the thread into a spec), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. On a vault tracker, **`/to-workflow`** next: it grills the **waves**, cheap per-ticket checks, and one verification **gate** into `Projects/<slug>/Workflow.md`. Then work the tickets one of two ways:
+   - **Yes** → **`/to-spec`** (turn the thread into a spec), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. On a vault tracker, **`/to-workflow`** next: it grills the **waves**, cheap per-ticket checks, and one verification **gate** into `Projects/<slug>/Workflow.md`. Then work the tickets:
+     - **Vault tracker:** **`/slice`** per ticket (stops at `Review`), or **`/afk`** to ship every wave unattended and run the gate once.
      - **`/implement`** per ticket, **`/clear`ing context between each one**. On a local tracker that's one file per ticket under `.scratch/<feature>/issues/`, worked blockers-first by hand; on a real tracker the edges become native blocking links, so any ticket whose blockers are done can be grabbed. Each ticket is self-contained, so the last one's context is disposable.
      - **`/implement-spec`** for the whole spec in one run. It reads the tickets as a **task graph**, runs implementer subagents across the ready **frontier** in parallel, and lands everything on one **integration branch**. Reach for it when you'd rather orchestrate the build than drive each ticket yourself.
    - **No** → **`/implement`** right here, in the same context window.
@@ -96,8 +97,12 @@ Off the main flow entirely.
 
 **`/setup-matt-pocock-skills`**: run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
 
-**`/setup-project-vault`** — vault-first alternative to `/setup-matt-pocock-skills`. Clones an Obsidian project vault into the repo and makes it the home for ADRs, specs, and issues (a kanban board where dev state is the folder and triage roles are frontmatter tags). Emits the same `docs/agents/*.md` receipts, and generates two project-local skills: `/slice`, for one ticket at a time (stops at `Review` for a human to test), and `/afk`, which drives the whole ready-for-agent backlog to `Done` unattended — dispatching a `/slice` subagent per unblocked ticket each round, each closing its own loop past `Review` — then leaves one project-wide manual-testing guide instead of per-ticket review. Pick this instead of `/setup-matt-pocock-skills` when you want your tracker in Obsidian; pick `/setup-matt-pocock-skills` for GitHub/GitLab/local-markdown tracking.
+**`/setup-project-vault`** — vault-first alternative to `/setup-matt-pocock-skills`. Clones an Obsidian project vault into the repo and makes it the home for ADRs, specs, and issues (a kanban board where dev state is the folder and triage roles are frontmatter tags). Emits the same `docs/agents/*.md` receipts. After `/to-tickets` and `/to-workflow`, **`/slice`** takes one ticket to `Review`; **`/afk`** ships `Workflow.md` waves unattended (one **gate** at the end). Pick this instead of `/setup-matt-pocock-skills` when you want your tracker in Obsidian; pick `/setup-matt-pocock-skills` for GitHub/GitLab/local-markdown tracking.
 
 **`/new-vault-project`** — scaffold a vault project directory (path determined by the project's vault dir, recorded in `docs/agents/issue-tracker.md`). Called automatically by `/to-spec` and `/to-tickets` when publishing to the vault tracker; reach for it directly to create a project dir without publishing.
 
 **`/to-workflow`** — after `/to-tickets` on a vault project, before `/afk` or `/ship`. Grills **waves** of parallel tickets, cheap per-ticket checks, and one **gate** into `Workflow.md`. `/afk` stops if that file is still the template.
+
+**`/slice`** — one vault ticket to `Review`, running only `Workflow.md` per-ticket checks. Model-invoked, so `/afk` can dispatch it.
+
+**`/afk`** — unattended vault project: execute `Workflow.md` waves in parallel worktrees, merge onto the feature branch, run the **gate** once, apply Close. No PR; a repo-local `/ship` does that.

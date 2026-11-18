@@ -36,11 +36,12 @@ Edit the `tags:` frontmatter only. Do **not** move the file between folders — 
 
 ## Dev-state transitions
 
-Driven by `/slice` (which wraps `/implement`), not by triage:
+Driven by `/slice`, not by triage:
 
 - **Claim / start work**: move `Ready` → `In Progress`.
-- **Finish**: move `In Progress` → `Review`. Only a human moves `Review` → `Done`.
+- **Finish**: move `In Progress` → `Review`.
+- **Done**: a human `/slice` leaves the ticket in `Review`. Unattended `/afk` applies `Workflow.md` Close (cheap checks pass → `Done`).
 
 ## Frontier (wayfinder-ready)
 
-Issues in `Ready/` whose every `blocked_by` stem resolves to a file now in `Done/`. Wired by the generated `/afk` skill, which ships the whole frontier per round and recomputes it after each merge.
+Issues in `Ready/` whose every `blocked_by` stem resolves to a file now in `Done/`. `/to-workflow` records them as **waves** in `Workflow.md`; `/afk` ships each wave in parallel and runs the **gate** once after the last wave.
